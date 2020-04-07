@@ -1,0 +1,144 @@
+Q.1 : Write a program to count how many numbers between 1 and 100 are divisible by 3 with no
+remainder. Display the count on the console.
+
+Solution :
+using System;
+
+namespace ControlFlow
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int counter = 0;
+            for (var i = 0;i <= 100; i++)
+            {
+                if ((i % 3) == 0)
+                    counter++;
+            }
+            Console.WriteLine(string.Format("{0} numbers", counter));
+        }
+    }
+}
+
+
+Q.2 :Write a program and continuously ask the user to enter a number or "ok" to exit.
+Calculate the sum of all the previously entered numbers and display it on the console.
+
+solution:
+
+using System;
+
+namespace exercise
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int sum = 0;
+            while (true)
+            {
+                var number = Console.ReadLine();
+
+                if (number.ToLower() == "ok")
+                    break;
+
+                sum = sum + Convert.ToInt32(number);
+            }
+            Console.WriteLine(sum);
+        }
+    }
+}
+
+Q.3 : Write a program and ask the user to enter a number. Compute the factorial of the 
+number and print it on the console. For example, if the user enters 5, the program should 
+calculate 5 x 4 x 3 x 2 x 1 and display it as 5! = 120.
+
+solution :
+using System;
+
+namespace exercise
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Enter a number: ");
+            var number = Convert.ToInt32(Console.ReadLine());
+
+            var factorial = 1;
+            for (var i = 1; i <= number; i++)
+                factorial *= i;
+
+            Console.WriteLine("{0}! = {1}", number, factorial);
+
+        }
+    }
+}
+
+
+Q.4 : Write a program that picks a random number between 1 and 10. Give the user 
+4 chances to guess the number. If the user guesses the number, display “You won"; 
+otherwise, display “You lost". (To make sure the program is behaving correctly, you can
+display the secret number on the console first.)
+
+solution :
+
+using System;
+
+namespace Exercise2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int count = 0;
+            Random RandomNo = new Random();
+            int RandomNumber = RandomNo.Next(1, 10);
+            for(int i = 0;i < 4; i++)
+            {
+                var GussedNo = Convert.ToInt32(Console.ReadLine());
+                if (GussedNo == RandomNumber)
+                {
+                    Console.WriteLine("you won");
+                    break;
+                }
+                else
+                    count++;
+            }
+            if(count == 4)
+            {
+                Console.WriteLine("you lost");
+            }
+
+        }
+    }
+}
+
+Q.5 : Write a program and ask the user to enter a series of numbers separated by comma. 
+Find the maximum of the numbers and display it on the console. For example, if 
+the user enters “5, 3, 8, 1, 4", the program should display 8.
+
+Solution :
+ using System;
+
+namespace Exercise5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var Num= Console.ReadLine();
+            var Numbers = Num.Split(',');
+            var max = 0;
+            foreach ( var i in Numbers)
+            {
+                var number = Convert.ToInt32(i);
+                if (number > max)
+                    max = number;
+            }
+            Console.WriteLine("max is " + max);
+
+        }
+    }
+}
