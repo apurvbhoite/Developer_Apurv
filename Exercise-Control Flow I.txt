@@ -1,0 +1,149 @@
+Exercises
+Note: for all these exercises, ignore input validation unless otherwise directed. Assume 
+the user enters a value in the format that the program expects. For example, if the 
+program expects the user to enter a number, don't worry about validating if the input 
+is a number or not. When testing your program, simply enter a number.
+
+Q.1 : Write a program and ask the user to enter a number. The number should be
+ between 1 to 10. If the user enters a valid number, display "Valid" on the console.
+Oherwise, display "Invalid". (This logic is used a lot in applications where values 
+entered into input boxes need to be validated.) 
+
+Solution :
+using System;
+
+namespace ValidNumber
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number = Convert.ToInt32(Console.ReadLine());
+            if (number <= 10 && number >= 0)
+            {
+                Console.WriteLine("Valid Number");
+            }
+            else
+            {
+                Console.WriteLine("Invalid Number"); 
+            }
+
+        }
+    }
+}
+
+
+Q.2 : Write a program which takes two numbers from the console and displays the maximum of the two.
+
+solution: 
+
+using System;
+
+namespace BiggerInTwo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var number1 = Convert.ToInt32(Console.ReadLine());
+            var number2 = Convert.ToInt32(Console.ReadLine());
+
+            if (number1 > number2 )
+            {
+                Console.WriteLine(string.Format(" {0} is bigger ",number1 ));
+            }
+            else if (number2 > number1 )
+                {
+                    Console.WriteLine(String.Format("{0} is bigger ",number2));
+                }
+            else if (number1 == number2 )
+            {
+                Console.WriteLine("Both are equal ");
+            }
+            
+
+             
+        }
+    }
+}
+
+Q.3 : Write a program and ask the user to enter the width and height of an image. Then tell 
+if the image is landscape or portrait.
+
+solutions 1 : 
+//tried using W/H ratio - failed 
+using System;
+class Program
+{
+  static void Main() 
+ {
+     int width = Convert.ToInt32(Console.ReadLine());
+            int height = Convert.ToInt32(Console.ReadLine());
+            if ((width / height) < 1)
+                Console.WriteLine("Image Is portrait");
+            if ((width / height) > 1)
+                Console.WriteLine("Image Is Landscape");
+            if ((int)(width / height) == 1)
+                Console.WriteLine("Image Is Sqaure");
+  }
+}
+
+solution 2: 
+using System;
+
+namespace ImageOrientation
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var width = Convert.ToInt32(Console.ReadLine());
+            var height = Convert.ToInt32(Console.ReadLine());
+            if (height > width)
+                Console.WriteLine("Image Is portrait");
+            if (width > height)
+                Console.WriteLine("Image Is Landscape");
+            if (height == width)
+                Console.WriteLine("Image Is Square");
+        }
+    }
+}
+
+
+Q.4 : Your job is to write a program for a speed camera. For simplicity, ignore the 
+details such as camera, sensors, etc and focus purely on the logic. Write a program 
+that asks the user to enter the speed limit. Once set, the program asks for the 
+speed of a car. If the user enters a value less than the speed limit, program should 
+display Ok on the console. If the value is above the speed limit, the program should
+calculate the number of demerit points. For every 5km/hr above the speed limit, 
+1 demerit points should be incurred and displayed on the console. If the number of 
+demerit points is above 12, the program should display License Suspended.
+
+solution : 
+using System;
+
+namespace SpeedCamera
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var SpeedLimit = Convert.ToInt32(Console.ReadLine());
+            var SpeedOfCar = Convert.ToInt32(Console.ReadLine());
+            int DemeritPoint = 0;
+            if (SpeedOfCar <= SpeedLimit)
+                Console.WriteLine("OK");
+            else
+            {
+                while(SpeedOfCar > SpeedLimit)
+                {
+                    DemeritPoint++;
+                    SpeedOfCar = SpeedOfCar - 5;
+                }
+                Console.WriteLine(string.Format(" {0} Demerit Point Received",DemeritPoint));
+                if (DemeritPoint > 12)
+                    Console.WriteLine("Licence Suspended");
+            }
+        }
+    }
+}
